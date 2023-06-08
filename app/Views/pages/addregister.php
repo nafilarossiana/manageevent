@@ -137,6 +137,7 @@
                                     value="<?= old('namakegiatan'); ?>"><br><br>
                             </div>
                         </div>
+
                         <div class=" form-group row">
                             <label for="fotoktm" class="col-sm-2 col-form-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 Foto

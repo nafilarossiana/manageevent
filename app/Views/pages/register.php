@@ -29,6 +29,7 @@
             <th scope="col">ACTION</th>
         </tr>
     </thead>
+
     <tbody>
         <?php $i = 0001; ?>
         <?php foreach($registerpeserta as $p) : ?>
@@ -54,6 +55,7 @@
             </td>
 
         </tr>
+
         <?php endforeach; ?>
     </tbody>
 </table>
