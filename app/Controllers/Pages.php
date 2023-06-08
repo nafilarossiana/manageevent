@@ -13,7 +13,7 @@ class Pages extends BaseController
     public function home()
     {
         $data=[
-            'title' => 'Home | RegistrasiEvent'
+            'title' => 'Home | WEB Event Organizer'
             
             
         ];
@@ -22,6 +22,9 @@ class Pages extends BaseController
         echo view ('layout/footer');
     }
 
+    public function __construct(){
+        $this->dafkegModel = new DaftarkegiatanModel();
+    }
     public function event()
     {
         $kegiatan = $this->dafkegModel->findAll();
@@ -35,6 +38,37 @@ class Pages extends BaseController
         echo view ('layout/footer');
 
     }
+
+    public function create(){
+        //session();
+        $data = [
+            'title' => 'Formulir | WEB Event Organizer',
+            'validation' => \Config\Services::validation()
+        ];
+        
+        echo view('layout/header', $data);
+        echo view('pages/create');
+        echo view('layout/footer');
+    }
+
+    public function editevent($id=null){
+        $dafkegModel =$this->dafkegModel->find($id);
+                $data=[
+                    'title' => 'Edit Form | WEB Event Organizer',
+                    'validation' =>  \Config\Services::validation(), 
+                    $dafkegModel = $this->dafkegModel->find($id)
+                    
+                    
+                ];
+                if (is_array($dafkegModel)) {
+                    $data['dafkegModel'] = $dafkegModel;
+                }
+                echo view ('layout/header', $data);
+                echo view ('pages/editevent');
+                echo view ('layout/footer');
+                //return redirect()->to('/pages/editregis');
+        }
+    
     public function register()
     {
         $registerpeserta= $this->registerModel->findAll();
@@ -121,7 +155,6 @@ class Pages extends BaseController
                 'title' => 'Edit Registration',
                 'validation' =>  \Config\Services::validation(), 
                 $registerModel = $this->registerModel->find($idregister)
-                
                 
             ];
             if (is_array($registerModel)) {
